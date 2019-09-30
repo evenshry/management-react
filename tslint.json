@@ -15,7 +15,8 @@
     "no-shadowed-variable": false,
     "no-console": false,
     "semicolon": false,
-    "array-type": false
+    "array-type": false,
+    "max-line-length": false
   },
   "rulesDirectory": []
 }

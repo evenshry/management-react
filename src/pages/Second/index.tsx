@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { HashRouter, Route } from 'react-router-dom';
-import Header from 'components/layouts/Header/index';
 import { observer, inject } from 'mobx-react';
 import { CommonStore } from 'stores/common';
-import { fetchCategory } from 'pages/Index/api';
-import Container from 'components/elements/Container';
-import { Button } from 'antd';
-import moment from 'moment';
+import { Container, Header } from 'components';
 
 interface Props {
   routes?: Array<HxRoute.RouteItem>;
@@ -31,15 +26,7 @@ class Index extends Component<Props, State> {
     errMsg: ''
   };
 
-  componentDidMount() {
-    fetchCategory({ type: '1' })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  componentDidMount() {}
 
   handleClick = () => {
     const { CommonStore } = this.injected;
@@ -48,9 +35,7 @@ class Index extends Component<Props, State> {
 
   render() {
     const { loading, errMsg } = this.state;
-    const { CommonStore, routes } = this.injected;
-
-    console.log(routes)
+    const { CommonStore } = this.injected;
 
     return (
       <Container loading={loading} errMsg={errMsg}>
@@ -58,21 +43,6 @@ class Index extends Component<Props, State> {
           <Header />
           <h2>这里是第二页</h2>
           <h3>{CommonStore.token}</h3>
-          <Button onClick={this.handleClick}>改变</Button>
-          <div>{moment().format('YYYY-MM-DD')}</div>
-          <HashRouter>
-            {routes &&
-              routes.map((router, index) => (
-                <Route
-                  exact={router.exact}
-                  key={index}
-                  path={router.path}
-                  render={(props) => {
-                    return <router.component {...props} routes={router.routes} />;
-                  }}
-                />
-              ))}
-          </HashRouter>
         </section>
       </Container>
     );

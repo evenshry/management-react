@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
-import Header from 'components/layouts/Header/index';
 import { observer, inject } from 'mobx-react';
 import { CommonStore } from 'stores/common';
 import { fetchCategory } from 'pages/Index/api';
-import Container from 'components/elements/Container';
+import { Container, Header } from 'components';
 import { Button } from 'antd';
 import moment from 'moment';
 

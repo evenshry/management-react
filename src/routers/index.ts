@@ -1,6 +1,6 @@
 import Index from 'pages/Index/index';
 import Second from 'pages/Second/index';
-import Third from 'pages/Index/index';
+import Third from 'pages/Second/index';
 
 const routes: Array<HxRoute.RouteItem> = [
   {
@@ -9,14 +9,18 @@ const routes: Array<HxRoute.RouteItem> = [
     exact: true
   },
   {
-    path: '/second',
-    component: Second,
+    path: '/index',
+    component: Index,
     routes: [
       {
-        path: '/second/third',
+        path: '/index/third',
         component: Third
       }
     ]
+  },
+  {
+    path: '/second',
+    component: Second
   }
 ];
 

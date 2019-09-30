@@ -3,17 +3,7 @@ import { Icon } from 'antd';
 
 import './style.less';
 
-export type ExceptionType =
-  | 'default'
-  | 'accessDenied'
-  | 'dataFault'
-  | 'noCoupon'
-  | 'noData'
-  | 'noMessage'
-  | 'noOrder'
-  | 'noSearch'
-  | 'pageLost'
-  | 'timeOut';
+export type ExceptionType = 'default' | 'accessDenied' | 'dataFault' | 'noData' | 'noMessage' | 'noSearch' | 'pageLost' | 'timeOut';
 
 const imageSource: { [key: string]: any } = {
   default: {
@@ -25,14 +15,12 @@ const imageSource: { [key: string]: any } = {
   dataFault: {
     message: '获取数据失败~'
   },
-
   noData: {
     message: '暂无相关数据~'
   },
   noMessage: {
     message: '暂无任何消息~'
   },
-
   noSearch: {
     message: '暂无搜索结果~'
   },
