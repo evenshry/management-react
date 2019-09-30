@@ -1,0 +1,65 @@
+{
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "esnext",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "strict": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "rootDirs": [
+      "./src"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "src": [
+        "."
+      ],
+      "assets/*": [
+        "assets/*"
+      ],
+      "components/*": [
+        "components/*"
+      ],
+      "pages/*": [
+        "pages/*"
+      ],
+      "routers/*": [
+        "routers/*"
+      ],
+      "stores/*": [
+        "stores/*"
+      ],
+      "styles/*": [
+        "styles/*"
+      ],
+      "utils/*": [
+        "utils/*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "global.d.ts"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "reportFiles": [
+      "./src/**/*"
+    ]
+  }
+}
