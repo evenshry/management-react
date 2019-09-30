@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'mobx-react';
 import { HashRouter, Route } from 'react-router-dom';
-import Container from 'components/elements/Container';
-import Index from 'pages/Index/index';
+import routers from 'routers';
 import stores from 'stores';
 
 import 'styles/common.less';
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [errMsg, setErrMsg] = useState<string>('');
-
   return (
     <Provider {...stores}>
       <HashRouter>
-        <Container loading={loading} errMsg={errMsg}>
-          <Route exact path="/" component={Index} />
-        </Container>
+        {routers.map((router, index) => (
+          <Route
+            exact={router.exact}
+            key={index}
+            path={router.path}
+            render={(props) => {
+              return <router.component {...props} routes={router.routes} />;
+            }}
+          />
+        ))}
       </HashRouter>
     </Provider>
   );

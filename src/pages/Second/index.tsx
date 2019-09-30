@@ -50,11 +50,13 @@ class Index extends Component<Props, State> {
     const { loading, errMsg } = this.state;
     const { CommonStore, routes } = this.injected;
 
+    console.log(routes)
+
     return (
       <Container loading={loading} errMsg={errMsg}>
         <section>
           <Header />
-          <h2>这里是首页</h2>
+          <h2>这里是第二页</h2>
           <h3>{CommonStore.token}</h3>
           <Button onClick={this.handleClick}>改变</Button>
           <div>{moment().format('YYYY-MM-DD')}</div>
