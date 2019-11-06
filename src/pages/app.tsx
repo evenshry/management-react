@@ -7,7 +7,6 @@ import zhCN from 'antd/es/locale/zh_CN';
 import { commonRoutes, systemRoutes } from 'routers';
 import stores from 'stores';
 
-import 'styles/variable.less';
 import 'styles/common.less';
 
 function App() {

@@ -46,7 +46,20 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loaders: ['style-loader', { loader: 'css-loader', options: { importLoaders: 1 } }, 'less-loader']
+        loaders: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {
+            loader: 'less-loader', // compiles Less to CSS
+            options: {
+              modifyVars: {
+                // 'primary-color': '#0fb6d3',
+                // 'link-color': '#0fb6d3',
+              },
+              javascriptEnabled: true
+            }
+          }
+        ]
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
