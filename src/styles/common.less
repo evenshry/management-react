@@ -1,88 +1,73 @@
-@import '~antd/dist/antd.css';
+@import '~antd/dist/antd.less';
+
+#root {
+  height: 100%;
+}
+
+.ant-layout.ant-layout-has-sider {
+  height: 100%;
+}
+
+.ant-menu-inline-collapsed > .ant-menu-item,
+.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item,
+.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title,
+.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
+  left: 0 !important;
+  padding: 0px 20px !important;
+  text-overflow: ellipsis !important;
+}
 
 /* flex */
 .flex {
   display: flex;
 }
 
-.flex-col {
+.flexCol {
   display: flex;
   flex-direction: column;
 }
 
-/* color */
-.color-stress {
-  color: #f0ad4e;
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexRowRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 /* margin */
 .mgt10 {
-  margin-top: 10rpx;
+  margin-top: 10px;
 }
 
 .mgt20 {
-  margin-top: 20rpx;
+  margin-top: 20px;
+}
+
+.mgl10 {
+  margin-left: 10px;
+}
+
+.mgl20 {
+  margin-left: 20px;
+}
+
+.mgr10 {
+  margin-right: 10px;
+}
+
+.mgr20 {
+  margin-right: 20px;
 }
 
 /* padding */
 .pdt10 {
-  padding-top: 10rpx;
+  padding-top: 10px;
 }
 
 .pdt20 {
-  padding-top: 20rpx;
-}
-
-/* ellipsis */
-.ellipsis {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.h10 {
-  height: 20rpx;
-}
-
-.h15 {
-  height: 30rpx;
-}
-
-.h20 {
-  height: 40rpx;
-}
-
-.h-fill {
-  height: 100%;
-}
-
-.flex-col-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-col-2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: -20rpx;
-}
-.flex-col-2 .flex-cell {
-  margin-top: 20rpx;
-  width: calc((100% - 20rpx) / 2);
-}
-
-.flex-col-3 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: -20rpx;
-}
-.flex-col-3 .flex-cell {
-  margin-top: 20rpx;
-  width: calc((100% - 20rpx * 2) / 3);
+  padding-top: 20px;
 }

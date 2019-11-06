@@ -1,4 +1,4 @@
-import CommonStore from "stores/common";
+import CommonStore from 'stores/common';
 
 export default {
   CommonStore

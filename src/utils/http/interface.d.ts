@@ -5,10 +5,10 @@ declare namespace Http {
    * server端返回的数据格式
    */
   interface ServerResponse<T> {
-    readonly apiStatus: number;
+    readonly apiStatus: string;
     readonly data: T;
     readonly info: string;
-    readonly sysStatus: number;
+    readonly sysStatus: string;
     readonly timestamp: number;
   }
 
@@ -16,6 +16,9 @@ declare namespace Http {
    * 配置
    */
   interface HttpRequestConfig extends AxiosRequestConfig {
-    token?: string;
+    /**
+     * 不验证
+     */
+    noAuth?: boolean;
   }
 }

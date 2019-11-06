@@ -16,7 +16,8 @@
     "no-console": false,
     "semicolon": false,
     "array-type": false,
-    "max-line-length": false
+    "max-line-length": false,
+    "no-empty": false
   },
   "rulesDirectory": []
 }

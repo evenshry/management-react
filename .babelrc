@@ -10,7 +10,15 @@
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "@babel/transform-runtime"
+    "@babel/transform-runtime",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "lib",
+        "style": true // `style: true` 会加载 less 文件
+      }
+    ]
   ],
   "env": {
     "production": {

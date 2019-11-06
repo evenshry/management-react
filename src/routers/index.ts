@@ -1,27 +1,35 @@
-import Index from 'pages/Index/index';
-import Second from 'pages/Second/index';
-import Third from 'pages/Second/index';
+import Login from 'pages/common/Login';
+import Index from 'pages/common/Index/index';
+import System from 'pages/common/System/index';
+import { unionPath } from './util';
+import indexChildren from './business/index';
 
-const routes: Array<HxRoute.RouteItem> = [
+/**
+ * 公用页面路径
+ */
+export const commonRoutes: Array<HxRoute.RouteItem> = [
   {
-    path: '/',
-    component: Index,
-    exact: true
-  },
-  {
-    path: '/index',
-    component: Index,
-    routes: [
-      {
-        path: '/index/third',
-        component: Third
-      }
-    ]
-  },
-  {
-    path: '/second',
-    component: Second
+    path: '/login',
+    component: Login
   }
 ];
 
-export default routes;
+/**
+ * 权限页面路由
+ */
+export const systemRoutes: Array<HxRoute.RouteItem> = [
+  {
+    path: '/',
+    component: Index,
+    routes: [
+      {
+        path: '/business',
+        indexPath: 'home',
+        title: '商家系统',
+        component: System,
+        routes: unionPath('/business', indexChildren),
+        isMenu: true
+      }
+    ]
+  }
+];

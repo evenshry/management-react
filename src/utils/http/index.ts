@@ -1,11 +1,15 @@
 import axios from 'axios';
 import { Http } from './interface';
 import { message } from 'antd';
+import { createHashHistory } from 'history';
 
+const history = createHashHistory();
 type req = Http.HttpRequestConfig;
 
+const BaseURL = 'https://moe-pub.servicesplus.cn/api/seller';
+
 // 请求地址
-axios.defaults.baseURL = 'https://yjhw-pub.servicesplus.cn/api';
+axios.defaults.baseURL = BaseURL;
 
 /**
  * 请求头信息拦截调整
@@ -16,10 +20,12 @@ axios.interceptors.request.use(
       config.timeout = 30 * 1000;
     }
     // 给每个请求新增时间戳
-    config.params = Object.assign({ _s: Date.now() }, config.params);
+    // config.params = Object.assign({ _s: Date.now() }, config.params);
 
-    if (config.token) {
+    if (!config.noAuth) {
       const token = localStorage.getItem('TOKEN');
+      const sellerId = localStorage.getItem('sellerId');
+      config.headers['X-Hanxi-SellerId'] = sellerId;
       config.headers['X-Hanxi-Token'] = token;
     }
     return config;
@@ -43,24 +49,28 @@ const ERROR_MSG: { [key: number]: string } = {
  */
 axios.interceptors.response.use(
   (response): any => {
-    console.log('success', response);
+    // console.log('success', response);
     const result = response.data || {};
     // 非成功状态提示
-    if (result.apiStatus !== 0 || result.sysStatus !== 0) {
-      message.error(result.info || '出错了，请重试！');
+    if (!result.apiStatus || !result.sysStatus || result.apiStatus !== '0' || result.sysStatus !== '0') {
+      const msg = result.info || '出错了，请重试！';
+      const error = new Error(msg);
+      message.error(msg);
+      return Promise.reject(error);
     }
     return result;
   },
   (error) => {
     /* TODO 对响应错误做点什么 */
-    console.log('error', error);
+    // console.log('error', error);
     if (error.data && !error.data.info) {
       const code: number = error.statusCode || 404;
       error.data.info = ERROR_MSG[code] || '发生了预期之外的错误';
     }
     const result = error.response.data || {};
     message.error(result.info || '出错了，请重试！');
-    if (result.sysStatus !== 0 && result.sysStatus !== 1005) {
+    if (result.apiStatus === '0' && result.sysStatus === '1006') {
+      history.push('/login');
       // TODO 跳转登录
     }
     return Promise.reject(error);
@@ -84,6 +94,7 @@ export function _delete<T>(url: string, config?: req): Promise<Http.ServerRespon
 }
 
 const http = {
+  BaseURL,
   get,
   post,
   put,
